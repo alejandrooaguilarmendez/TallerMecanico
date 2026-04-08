@@ -1,6 +1,7 @@
 package org.iesalandalus.programacion.tallermecanico.controlador;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.Modelo;
+import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
@@ -36,15 +37,15 @@ public class Controlador {
         vista.terminar();
     }
 
-    public void insertar(Cliente cliente) throws Exception {
+    public void insertar(Cliente cliente) throws TallerMecanicoExcepcion {
         modelo.insertar(cliente);
     }
 
-    public void insertar(Vehiculo vehiculo) throws Exception {
+    public void insertar(Vehiculo vehiculo) throws TallerMecanicoExcepcion {
         modelo.insertar(vehiculo);
     }
 
-    public void insertar(Revision revision) throws Exception {
+    public void insertar(Revision revision) throws TallerMecanicoExcepcion {
         modelo.insertar(revision);
     }
 
@@ -60,31 +61,31 @@ public class Controlador {
         return modelo.buscar(revision);
     }
 
-    public void modificar(Cliente cliente, String nombre, String telefono) throws Exception {
+    public void modificar(Cliente cliente, String nombre, String telefono) throws TallerMecanicoExcepcion {
         modelo.modificar(cliente, nombre, telefono);
     }
 
-    public void anadirHoras(Revision revision, int horas) throws Exception {
+    public void anadirHoras(Revision revision, int horas) throws TallerMecanicoExcepcion {
         modelo.anadirHoras(revision, horas);
     }
 
-    public void anadirPrecioMaterial(Revision revision, float precioMaterial) throws Exception {
+    public void anadirPrecioMaterial(Revision revision, float precioMaterial) throws TallerMecanicoExcepcion {
         modelo.anadirPrecioMaterial(revision, precioMaterial);
     }
 
-    public void cerrar(Revision revision, LocalDate fechaFin) throws Exception {
+    public void cerrar(Revision revision, LocalDate fechaFin) throws TallerMecanicoExcepcion {
         modelo.cerrar(revision, fechaFin);
     }
 
-    public void borrar(Cliente cliente) throws Exception {
+    public void borrar(Cliente cliente) throws TallerMecanicoExcepcion {
         modelo.borrar(cliente);
     }
 
-    public void borrar(Vehiculo vehiculo) throws Exception {
+    public void borrar(Vehiculo vehiculo) throws TallerMecanicoExcepcion {
         modelo.borrar(vehiculo);
     }
 
-    public void borrar(Revision revision) throws Exception {
+    public void borrar(Revision revision) throws TallerMecanicoExcepcion {
         modelo.borrar(revision);
     }
 
