@@ -1,47 +1,46 @@
-package org.iesalandalus.programacion.tallermecanico.modelo.negocio;
+package org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.IVehiculos;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Vehiculos {
-    private List<Vehiculo> coleccionVehiculo;
+public class Vehiculos implements IVehiculos {
+    private final List<Vehiculo> coleccionVehiculos;
 
-    public Vehiculos(){
-        this.coleccionVehiculo = new ArrayList<>();
+    public Vehiculos() {
+        coleccionVehiculos = new ArrayList<>();
     }
 
-    public List<Vehiculo> get(){
-        return coleccionVehiculo;
+    @Override
+    public List<Vehiculo> get() {
+        return new ArrayList<>(coleccionVehiculos);
     }
 
+    @Override
     public void insertar(Vehiculo vehiculo) throws TallerMecanicoExcepcion {
         Objects.requireNonNull(vehiculo, "No se puede insertar un vehículo nulo.");
-        if (coleccionVehiculo.contains(vehiculo)) {
+        if (coleccionVehiculos.contains(vehiculo))
             throw new TallerMecanicoExcepcion("Ya existe un vehículo con esa matrícula.");
-        }
-        coleccionVehiculo.add(vehiculo);
+        coleccionVehiculos.add(vehiculo);
     }
 
-    public Vehiculo buscar(Vehiculo vehiculo){
+    @Override
+    public Vehiculo buscar(Vehiculo vehiculo) {
         Objects.requireNonNull(vehiculo, "No se puede buscar un vehículo nulo.");
-
-        int indice = coleccionVehiculo.indexOf(vehiculo);
-        if (indice != -1) {
-            return coleccionVehiculo.get(indice);
-        }
-        return null;
+        int indice = coleccionVehiculos.indexOf(vehiculo);
+        if (indice == -1)
+            return null;
+        return coleccionVehiculos.get(indice);
     }
 
+    @Override
     public void borrar(Vehiculo vehiculo) throws TallerMecanicoExcepcion {
         Objects.requireNonNull(vehiculo, "No se puede borrar un vehículo nulo.");
-
-        boolean borrado = coleccionVehiculo.remove(vehiculo);
-        if (!borrado) {
+        if (!coleccionVehiculos.remove(vehiculo))
             throw new TallerMecanicoExcepcion("No existe ningún vehículo con esa matrícula.");
-        }
     }
 }

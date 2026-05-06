@@ -61,7 +61,7 @@ class TrabajoTest {
     }
 
     @Test
-    void constructorClienteValidoVehiculoValidoFechaInicioValidaCreaRevisionCorrectamente() {
+    void constructorClienteValidoVehiculoValidoFechaInicioValidaCreaTrabajoCorrectamente() {
         assertEquals(cliente, revision.getCliente());
         assertSame(cliente, revision.getCliente());
         assertEquals(vehiculo, revision.getVehiculo());

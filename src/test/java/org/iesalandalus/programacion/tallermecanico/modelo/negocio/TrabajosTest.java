@@ -194,7 +194,7 @@ class TrabajosTest {
     }
 
     @Test
-    void anadirPrecioMaterialRevisionValidaPrecioMaterialValidoLanzaExcepcion() {
+    void anadirPrecioMaterialTrabajoValidaPrecioMaterialValidoLanzaExcepcion() {
         assertDoesNotThrow(() -> trabajos.insertar(revision));
         TallerMecanicoExcepcion tme = assertThrows(TallerMecanicoExcepcion.class, () -> trabajos.anadirPrecioMaterial(revision, 100f));
         assertEquals("No se puede añadir precio al material para este tipo de trabajos.", tme.getMessage());
